@@ -1,5 +1,6 @@
 .idea
 .gradle
+build
 gradle
 src/test/resources/
 src/test/resources/config
