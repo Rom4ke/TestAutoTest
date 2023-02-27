@@ -1,15 +1,10 @@
 package steps;
-
-import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
-
 import java.io.File;
-import java.util.Locale;
 
 import static com.codeborne.selenide.Selenide.$x;
 
 public class WriteInForm{
-
 
 
     @Step("Открыть страницу с формами")
