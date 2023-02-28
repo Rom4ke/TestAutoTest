@@ -15,10 +15,10 @@ public class TestBase {
 
     @BeforeAll
     public static void goTo(){
-        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = false;
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = SITE_URL;
-        Configuration.browser = "chrome";
+        Configuration.browser = "firefox";
         SelenideLogger.addListener("AllureSelenide",
                 new AllureSelenide());
         open(SITE_URL);
