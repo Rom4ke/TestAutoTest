@@ -17,7 +17,7 @@ public class TestBase {
     public static void goTo(){
         Configuration.holdBrowserOpen = false;
 //        Configuration.browserSize = "1920x1080";
-        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+//        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.baseUrl = SITE_URL;
         Configuration.browser = "firefox";
         SelenideLogger.addListener("AllureSelenide",
