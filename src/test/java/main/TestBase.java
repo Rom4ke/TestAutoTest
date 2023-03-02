@@ -11,15 +11,14 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class TestBase {
 
-//    static String SITE_URL = "https://demoqa.com/";
+    static String SITE_URL = System.getProperty ("site_url", "https://demoqa.com/");;
 
     @BeforeAll
     public static void goTo(){
         Configuration.holdBrowserOpen = false;
 //        Configuration.browserSize = "1920x1080";
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-
-        Configuration.baseUrl = System.getProperty ("site_url", "https://demoqa.com/");
+        Configuration.baseUrl = SITE_URL;
         Configuration.browser = "firefox";
         SelenideLogger.addListener("AllureSelenide",
                 new AllureSelenide());
