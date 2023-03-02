@@ -5,6 +5,7 @@ import io.qameta.allure.Epic;
 import main.FakerData;
 import main.TestBase;
 import main.UserData;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import steps.WriteInForm;
 
@@ -15,6 +16,7 @@ public class CorrectWriteInForm extends FakerData {
 
     @Epic(value = "Заполнение формы")
     @Test
+    @Tag("one")
     @Description(value = "заполнение формы")
 
     public void correctWriteInForm(){

@@ -41,3 +41,11 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+tasks startTest(type: Test) {
+    useJUnitPlatform{
+        includeTags("one")
+        includeTags("one")
+    }
+
+}
