@@ -18,5 +18,22 @@ node {
                 echo "Current branch is main"
             }
         }
+        try {
+            parallel getTestStages(["CorrectWriteInForm", "WikeTest"])
+        } finally {
+            stage ("Allure") {
+                generateAllure()
+            }
+        }
     }
+}
+
+def generateAllure() {
+    allure([
+            includeProperties: true,
+            jdk:'',
+            properties:[],
+            reportBuildPolicy: 'ALWAYS',
+            results: [[path: 'build/allure-results']]
+    ])
 }
