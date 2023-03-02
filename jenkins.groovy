@@ -8,7 +8,7 @@ base_git_url = "https://github.com/Rom4ke/TestAutoTest.git"
 node {
     withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"]) {
         stage("Checkout Branch") {
-            if (!"$branch_cutted".contains("main")) {
+            if (!"$branch_cutted".contains("master")) {
                 try {
                     getProject("$base_git_url", "$branch_cutted")
                 } catch (err) {
