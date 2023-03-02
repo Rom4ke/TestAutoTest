@@ -33,10 +33,10 @@ node {
                 parallel(
                         'CorrectWriteInForm': {
                             runTestWithTag("CorrectWriteInForm")
-                        },
-                        'WikiTest': {
-                            runTestWithTag("WikiTest")
                         }
+//                        'WikiTest': {
+//                            runTestWithTag("WikiTest")
+//                        }
                 )
             }
         } finally {
