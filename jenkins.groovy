@@ -20,30 +20,30 @@ node {
             }
         }
 
-        try {
-            parallel getTestStages(["CorrectWriteInForm", "WikiTest"])
-        } finally {
-            stage ("Allure") {
-                generateAllure()
-            }
-        }
-
 //        try {
-//            stage("Run tests") {
-//                parallel(
-//                        'Api Tests': {
-//                            runTestWithTag("apiTests")
-//                        },
-//                        'Ui Tests': {
-//                            runTestWithTag("uiTests")
-//                        }
-//                )
-//            }
+//            parallel getTestStages(["CorrectWriteInForm", "WikiTest"])
 //        } finally {
-//            stage("Allure") {
+//            stage ("Allure") {
 //                generateAllure()
 //            }
 //        }
+
+        try {
+            stage("Run tests") {
+                parallel(
+                        'CorrectWriteInForm': {
+                            runTestWithTag("CorrectWriteInForm")
+                        },
+                        'WikiTest': {
+                            runTestWithTag("WikiTest")
+                        }
+                )
+            }
+        } finally {
+            stage("Allure") {
+                generateAllure()
+            }
+        }
     }
 }
 
