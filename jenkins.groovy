@@ -1,8 +1,9 @@
 task_branch = "${TEST_BRANCH_NAME}"
-
 def branch_cutted = task_branch.contains("origin") ? task_branch.split('/')[1] : task_branch.trim()
 currentBuild.displayName = "$branch_cutted"
+
 base_git_url = "https://github.com/Rom4ke/TestAutoTest.git"
+
 
 node {
     withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"]) {
@@ -15,9 +16,10 @@ node {
                     throw ("${err}")
                 }
             } else {
-                echo "Current branch is main"
+                echo "Current branch is master"
             }
         }
+
         try {
             parallel getTestStages(["CorrectWriteInForm", "WikiTest"])
         } finally {
@@ -25,20 +27,39 @@ node {
                 generateAllure()
             }
         }
+
+//        try {
+//            stage("Run tests") {
+//                parallel(
+//                        'Api Tests': {
+//                            runTestWithTag("apiTests")
+//                        },
+//                        'Ui Tests': {
+//                            runTestWithTag("uiTests")
+//                        }
+//                )
+//            }
+//        } finally {
+//            stage("Allure") {
+//                generateAllure()
+//            }
+//        }
     }
 }
+
 
 def getTestStages(testTags) {
     def stages = [:]
     testTags.each { tag ->
-        stages ["${tag}"] = {
-            returnTestWithTag(tag)
+        stages["${tag}"] = {
+            runTestWithTag(tag)
         }
     }
     return stages
 }
 
-def runTestWithTag (String tag) {
+
+def runTestWithTag(String tag) {
     try {
         labelledShell(label: "Run ${tag}", script: "chmod +x gradlew \n./gradlew -x test ${tag}")
     } finally {
@@ -46,22 +67,23 @@ def runTestWithTag (String tag) {
     }
 }
 
-def getProject (String repo, String branch) {
+def getProject(String repo, String branch) {
     cleanWs()
     checkout scm: [
-            $class : 'GitSCM', branches: [[name: branch]],
+            $class           : 'GitSCM', branches: [[name: branch]],
             userRemoteConfigs: [[
-                    url: repo
-            ]]
+                                        url: repo
+                                ]]
     ]
 }
 
 def generateAllure() {
     allure([
             includeProperties: true,
-            jdk:'',
-            properties:[],
+            jdk              : '',
+            properties       : [],
             reportBuildPolicy: 'ALWAYS',
-            results: [[path: 'build/allure-results']]
+            results          : [[path: 'build/allure-results']]
     ])
 }
+
