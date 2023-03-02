@@ -16,7 +16,6 @@ public class CorrectWriteInForm extends FakerData {
 
     @Epic(value = "Заполнение формы")
     @Test
-    @Tag("one")
     @Description(value = "заполнение формы")
 
     public void correctWriteInForm(){
