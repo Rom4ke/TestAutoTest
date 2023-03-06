@@ -1,10 +1,12 @@
 package steps;
 import io.qameta.allure.Step;
+import main.BasePage;
+
 import java.io.File;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public class WriteInForm{
+public class WriteInForm extends BasePage {
 
 
     @Step("Открыть страницу с формами")
@@ -80,16 +82,27 @@ public class WriteInForm{
         $x("//textarea[@id='currentAddress']").click();
         $x("//textarea[@id='currentAddress']").setValue(value);
         return this;
+
     }
 
-//    @Step("Выбор State and City")
-//    public WriteInForm selectStateAndCity() {
-//        $x("").click();
-//        return this;
-//    }
+    @Step("Выбор State")
+    public WriteInForm selectState() {
+        $x("//div[@id='state']").click();
+        $x("//div[@id='react-select-3-option-1']").click();
+        return this;
+    }
+
+    @Step("Выбор City")
+    public WriteInForm selectCity() {
+        $x("//div[@id='city']").click();
+        $x("//div[@id='react-select-4-option-1']").click();
+        return this;
+    }
+
     @Step("Клик по кнопке Submit")
     public WriteInForm clickSubmit() {
         $x("//button[@id='submit']").click();
+        attachScreenshot();
         return this;
     }
 }

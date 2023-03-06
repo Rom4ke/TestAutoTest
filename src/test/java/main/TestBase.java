@@ -14,11 +14,11 @@ public class TestBase {
 
     @BeforeAll
     public static void goTo(){
-        Configuration.holdBrowserOpen = false;
+        Configuration.holdBrowserOpen = true;
         Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
 //        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.baseUrl = SITE_URL;
-        Configuration.browser = System.getProperty("browser","firefox");
+        Configuration.browser = System.getProperty("browser","chrome");
         SelenideLogger.addListener("AllureSelenide",
                 new AllureSelenide());
         open(SITE_URL);

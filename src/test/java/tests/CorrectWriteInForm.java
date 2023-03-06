@@ -31,6 +31,8 @@ public class CorrectWriteInForm extends FakerData {
                 .selectHobbies()
                 .addPicture()
                 .enterCurrentAddress(userData.fullAddress)
+                .selectState()
+                .selectCity()
                 .clickSubmit();
     }
 }
