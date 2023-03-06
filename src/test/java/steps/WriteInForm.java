@@ -52,12 +52,42 @@ public class WriteInForm extends BasePage {
         return this;
     }
 
-//    @Step("Ввод даты рождения")
-//    public WriteInForm dateOfBirth() {
-//        $x("//input[@id='dateOfBirthInput']").click();
-//        return this;
-//    }
+    @Step("Ввод даты рождения")
+    public WriteInForm dateOfBirth() {
+        $x("//input[@id='dateOfBirthInput']").click();
+        $x("//select[@class='react-datepicker__month-select']").click();
+        return this;
+    }
 
+    @Step("Открыть список месяцев")
+    public WriteInForm selectMoth() {
+        $x("//select[@class='react-datepicker__month-select']").click();
+        return this;
+    }
+
+    @Step("Выбор месяца")
+    public WriteInForm takeMoth() {
+        $x("//option[@value='8']").click();
+        return this;
+    }
+
+    @Step("Открыть список года")
+    public WriteInForm selectYear() {
+        $x("//select[@class='react-datepicker__year-select']").click();
+        return this;
+    }
+
+    @Step("Выбор года")
+    public WriteInForm takeYear() {
+        $x("//option[@value='2007']").click();
+        return this;
+    }
+
+    @Step("Выбор дня")
+    public WriteInForm takeDay() {
+        $x("//div[@aria-label='Choose Saturday, September 1st, 2007']").click();
+        return this;
+    }
 //    @Step("Ввод Subjects")
 //    public WriteInForm enterSubjects() {
 //        $x("").click();
