@@ -20,7 +20,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2",
             "org.junit.jupiter:junit-jupiter-engine:5.8.2",
             "com.github.javafaker:javafaker:1.0.2",
-            "com.codeborne:selenide:6.11.2",
+            "com.codeborne:selenide:6.12.2",
             "io.qameta.allure:allure-junit5:2.13.6",
             "io.qameta.allure:allure-commandline:2.13.6",
             "io.qameta.allure:allure-assertj:2.13.6",
