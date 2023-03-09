@@ -24,6 +24,10 @@ public class FakerData {
         return faker.bothify("8921#######");
     }
 
+    public static String randomSubjects(){
+        return faker.country().name();
+    }
+
     public static String randomFullAddress(){
         return faker.address().fullAddress();
     }

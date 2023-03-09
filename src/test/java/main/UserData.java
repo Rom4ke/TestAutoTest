@@ -5,6 +5,8 @@ public class UserData {
     public String lastName;
     public String email;
     public String phone;
+
+    public String subjects;
     public String fullAddress;
 
     public UserData (){
@@ -12,6 +14,7 @@ public class UserData {
         this.lastName = randomLastName();
         this.email = randomEmail();
         this.phone = randomPhone();
+        this.subjects = randomSubjects();
         this.fullAddress = randomFullAddress();
     }
 }
